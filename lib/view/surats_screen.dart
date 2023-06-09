@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/controller/get_surahs_provider.dart';
 import 'package:quran/model/surah_model.dart';
-import 'package:quran/view/home_screen.dart';
+import 'package:quran/view/ayahs_screen.dart';
 
 import '../constans.dart';
 
@@ -39,7 +39,8 @@ class SurahScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(
-                            numberOfAyah: (quran.surahs![index].number! - 1),
+                            name: '${quran.surahs?[index].name}',
+                            ayahs: (quran.surahs![index].ayahs!),
                           ),
                         ));
                   },
