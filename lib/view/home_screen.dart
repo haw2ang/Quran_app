@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/controller/get_surah_api.dart';
-import 'package:quran/model/initial_model.dart';
+import 'package:quran/controller/get_surahs_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.numberOfAyah});
@@ -14,27 +13,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    GetSurah getSurah = GetSurah();
+    GetSurahProvider getSurah = GetSurahProvider();
 
     return Scaffold(
         backgroundColor: Colors.blueGrey,
-        appBar: AppBar(),
         body: FutureBuilder(
-          future: getSurah.loadData(),
+          future: getSurah.loadSurahs(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
             return ListView.builder(
               reverse: false,
               scrollDirection: Axis.vertical,
-              itemCount: snapshot.data!.data!.surahs![widget.numberOfAyah].ayahs!.length,
+              itemCount:
+                  snapshot.data!.surahs![widget.numberOfAyah].ayahs!.length,
               itemBuilder: (context, index) {
                 return Container(
                   width: 300,
                   alignment: Alignment.center,
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(20),
@@ -44,9 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${snapshot.data!.data!.surahs![widget.numberOfAyah].ayahs![index].text}',
+                        '${snapshot.data!.surahs![widget.numberOfAyah].ayahs![index].text}',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ],
                   ),
