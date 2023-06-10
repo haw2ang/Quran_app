@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quran/view/surats_screen.dart';
-
+import 'package:quran/controller/actions_provider.dart';
+import 'package:quran/view/screens/surats_screen.dart';
 import 'controller/get_surahs_provider.dart';
 
 void main() {
@@ -13,23 +13,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<GetSurahProvider>(
-          create: (context) => GetSurahProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          fontFamily: 'nabi',
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(fontSize: 22.0),
-          ),
-        ),
-        home: const SurahScreen(),
+    return MultiProvider(providers: [
+      ChangeNotifierProvider<SurahProvider>(
+        create: (context) => SurahProvider(),
       ),
+      ChangeNotifierProvider<ActionProvider>(
+        create: (context) => ActionProvider(),
+      ),
+    ], child: MaterialWidget());
+  }
+}
+
+class MaterialWidget extends StatelessWidget {
+  const MaterialWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ActionProvider>(
+      builder: (context, value, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: true,
+            fontFamily: value.selectedFont,
+            textTheme: TextTheme(
+              bodyMedium: TextStyle(fontSize: value.fontSize),
+            ),
+          ),
+          home: const SurahScreen(),
+        );
+      },
     );
   }
 }

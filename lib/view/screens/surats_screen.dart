@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quran/constans.dart';
 import 'package:quran/controller/get_surahs_provider.dart';
 import 'package:quran/model/surah_model.dart';
-import 'package:quran/view/ayahs_screen.dart';
-
-import '../constans.dart';
+import 'package:quran/view/screens/ayahs_screen.dart';
+import 'package:quran/view/screens/settings_screen.dart';
 
 class SurahScreen extends StatelessWidget {
   const SurahScreen({super.key});
@@ -19,10 +19,25 @@ class SurahScreen extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: hexToArgb('#2E3138'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingScreen(),
+                  ));
+            },
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
       backgroundColor: hexToArgb('#1F2125'),
       body: FutureProvider(
-        create: (context) => context.read<GetSurahProvider>().loadSurahs(),
+        create: (context) => context.read<SurahProvider>().loadSurahs(),
         initialData: SurahModel(),
         child: Consumer<SurahModel>(
           builder: (context, quran, child) {

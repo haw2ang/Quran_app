@@ -35,7 +35,7 @@ RichText ayahSymbol(int numberOfAyah) {
 
 double paddingNumberInsideSymbol(int number) {
   if (number < 10) {
-    return 6;
+    return 7;
   } else if (number < 100) {
     return 4;
   } else {

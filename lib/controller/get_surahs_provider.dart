@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:quran/model/surah_model.dart';
 import 'package:quran/model/tafseer_model.dart';
 
-class GetSurahProvider extends ChangeNotifier {
+class SurahProvider extends ChangeNotifier {
   Future<String> loadJsonAsset() async {
     return await rootBundle.loadString('assets/quran.json');
   }
