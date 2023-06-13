@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<ActionProvider>(
         create: (context) => ActionProvider(),
       ),
-    ], child: MaterialWidget());
+    ], child: const MaterialWidget());
   }
 }
 

@@ -61,23 +61,42 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: first
+    - family: MUHAMMADI QURANIC FONT
       fonts:
-        - asset: assets/fonts/MUHAMMADI QURANIC FONT.ttf
-    - family: nizar
-      fonts:
-        - asset: assets/fonts/NizarCoconKurdishLight.ttf
+        - asset: assets/fonts/quran/MUHAMMADI QURANIC FONT.ttf
     - family: nabi
       fonts:
-        - asset: assets/fonts/Nabi.ttf
+        - asset: assets/fonts/quran/Nabi.ttf
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/quran/AmiriQuran-Regular.ttf
+    - family: Neirizi
+      fonts:
+        - asset: assets/fonts/quran/Neirizi.ttf
+    - family: Me Quran
+      fonts:
+        - asset: assets/fonts/quran/Me Quran.ttf
+    - family: Hafs
+      fonts:
+        - asset: assets/fonts/quran/Hafs.ttf
+    - family: Arslan Wessam
+      fonts:
+        - asset: assets/fonts/quran/(A) Arslan Wessam B (A) Arslan Wessam B.ttf
     - family: calibri
       fonts:
         - asset: assets/fonts/Calibri Regular.ttf
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+    - family: K24
+      fonts:
+        - asset: assets/fonts/kurdish/K24KurdishLight-Light.ttf
+    - family: NRT
+      fonts:
+        - asset: assets/fonts/kurdish/NRT-Reg.ttf
+    - family: Rudaw
+      fonts:
+        - asset: assets/fonts/kurdish/rudawregular2.ttf
+    - family: Speda
+      fonts:
+        - asset: assets/fonts/kurdish/Speda.ttf
+    - family: Nizar
+      fonts:
+        - asset: assets/fonts/kurdish/NizarCoconKurdishLight.ttf

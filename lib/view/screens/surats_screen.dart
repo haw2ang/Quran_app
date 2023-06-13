@@ -25,10 +25,10 @@ class SurahScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SettingScreen(),
+                    builder: (context) => const SettingScreen(),
                   ));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.settings,
               color: Colors.white,
             ),

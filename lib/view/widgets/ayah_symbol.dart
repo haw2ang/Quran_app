@@ -10,7 +10,7 @@ RichText ayahSymbol(int numberOfAyah) {
           style: TextStyle(
             color: Colors.white,
             fontSize: 37,
-            fontFamily: 'first',
+            fontFamily: 'MUHAMMADI QURANIC FONT',
           ),
         ),
         WidgetSpan(
