@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quran/constans.dart';
 
 class ActionProvider extends ChangeNotifier {
-  double fontSize = 10;
-  double fontSizeOfTafseer = 10;
   List<String> dropdownFontOptions = [
     'nabi',
     'Amiri',
@@ -12,7 +11,6 @@ class ActionProvider extends ChangeNotifier {
     'Hafs',
     'Arslan Wessam'
   ];
-  String selectedFont = 'nabi';
   List<String> dropdownTafseerFontOptions = [
     'nabi',
     'NRT',
@@ -21,25 +19,39 @@ class ActionProvider extends ChangeNotifier {
     'Rudaw',
     'Speda'
   ];
-  String selectedTafseerFont = 'nabi';
 
   void changeFontSize(newValue) {
-    fontSize = newValue;
+    double x = storage.read('fontSize');
+    x = newValue;
+    storage.write('fontSize', x);
     notifyListeners();
   }
 
   void changeFontSizeOfTafseer(newValue) {
-    fontSizeOfTafseer = newValue;
+    double x = storage.read('fontSizeOfTafseer');
+    x = newValue;
+    storage.write('fontSizeOfTafseer', x);
     notifyListeners();
   }
 
   void changeFontFamily(newValue) {
-    selectedFont = newValue;
+    String x = storage.read('selectedFont');
+    x = newValue;
+    storage.write('selectedFont', x);
     notifyListeners();
   }
 
   void changeTafseerFontFamily(newValue) {
-    selectedTafseerFont = newValue;
+    String x = storage.read('selectedTafseerFont');
+    x = newValue;
+    storage.write('selectedTafseerFont', x);
     notifyListeners();
+  }
+
+  Future<void> check() async {
+    storage.writeIfNull('fontSize', 10.0);
+    storage.writeIfNull('fontSizeOfTafseer', 10.0);
+    storage.writeIfNull('selectedFont', 'nabi');
+    storage.writeIfNull('selectedTafseerFont', 'nabi');
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 Color hexToArgb(String hexColor) {
   hexColor = hexColor.replaceAll("#", "");
@@ -8,3 +9,5 @@ Color hexToArgb(String hexColor) {
   }
   return Color(colorInt);
 }
+
+final storage = GetStorage();

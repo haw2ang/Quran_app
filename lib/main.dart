@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:quran/constans.dart';
 import 'package:quran/controller/actions_provider.dart';
 import 'package:quran/view/screens/surats_screen.dart';
 import 'controller/get_surahs_provider.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -20,6 +23,9 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<ActionProvider>(
         create: (context) => ActionProvider(),
       ),
+      ChangeNotifierProvider(
+        create: (context) => ActionProvider()..check(),
+      )
     ], child: const MaterialWidget());
   }
 }
@@ -35,9 +41,9 @@ class MaterialWidget extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
-            fontFamily: value.selectedFont,
+            fontFamily: storage.read('selectedFont'),
             textTheme: TextTheme(
-              bodyMedium: TextStyle(fontSize: value.fontSize),
+              bodyMedium: TextStyle(fontSize: storage.read('fontSize')),
             ),
           ),
           home: const SurahScreen(),

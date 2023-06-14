@@ -29,8 +29,8 @@ class SettingScreen extends StatelessWidget {
                   '﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: actionProvider.fontSize,
-                    fontFamily: actionProvider.selectedFont,
+                    fontSize: storage.read('fontSize'),
+                    fontFamily: storage.read('selectedFont'),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -38,8 +38,8 @@ class SettingScreen extends StatelessWidget {
                   'به‌ناوی خوای به‌خشنده‌ی میهره‌بان',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: actionProvider.fontSizeOfTafseer,
-                    fontFamily: actionProvider.selectedTafseerFont,
+                    fontSize: storage.read('fontSizeOfTafseer'),
+                    fontFamily: storage.read('selectedTafseerFont'),
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -49,13 +49,13 @@ class SettingScreen extends StatelessWidget {
                       child: SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           thumbShape: CustomSliderTextInsideThumbShape(
-                              '${actionProvider.fontSize.floor()}'),
+                              '${storage.read('fontSize').floor()}'),
                           overlayShape: const RoundSliderOverlayShape(
                               overlayRadius: 18.0),
                         ),
                         child: Slider(
                           activeColor: hexToArgb('#494F59'),
-                          value: actionProvider.fontSize,
+                          value: storage.read('fontSize'),
                           min: 10.0,
                           max: 40.0,
                           onChanged: (newValue) {
@@ -79,13 +79,13 @@ class SettingScreen extends StatelessWidget {
                       child: SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           thumbShape: CustomSliderTextInsideThumbShape(
-                              '${actionProvider.fontSizeOfTafseer.floor()}'),
+                              '${storage.read('fontSizeOfTafseer').floor()}'),
                           overlayShape: const RoundSliderOverlayShape(
                               overlayRadius: 18.0),
                         ),
                         child: Slider(
                           activeColor: hexToArgb('#494F59'),
-                          value: actionProvider.fontSizeOfTafseer,
+                          value: storage.read('fontSizeOfTafseer'),
                           min: 10.0,
                           max: 40.0,
                           onChanged: (newValue) {
@@ -112,14 +112,14 @@ class SettingScreen extends StatelessWidget {
                       dropdownColor: hexToArgb('#494F59'),
                       underline: Container(),
                       borderRadius: BorderRadius.circular(12),
-                      value: actionProvider.selectedFont,
+                      value: storage.read('selectedFont'),
                       items: actionProvider.dropdownFontOptions
                           .map((String option) {
                         return DropdownMenuItem<String>(
                           value: option,
                           child: Text(
                             option,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontFamily: 'calibri',
                             ),
@@ -147,14 +147,14 @@ class SettingScreen extends StatelessWidget {
                       dropdownColor: hexToArgb('#494F59'),
                       underline: Container(),
                       borderRadius: BorderRadius.circular(12),
-                      value: actionProvider.selectedTafseerFont,
+                      value: storage.read('selectedTafseerFont'),
                       items: actionProvider.dropdownTafseerFontOptions
                           .map((String option) {
                         return DropdownMenuItem<String>(
                           value: option,
                           child: Text(
                             option,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontFamily: 'calibri',
                             ),

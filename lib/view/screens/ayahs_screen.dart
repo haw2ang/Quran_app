@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
             child: Consumer<TafseerModel>(
               builder: (context, kurdish, child) {
                 return ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   separatorBuilder: (context, index) =>
                       const Divider(thickness: .2),
                   itemCount: ayahs.length,
@@ -55,11 +56,14 @@ class HomeScreen extends StatelessWidget {
                                     style: const TextStyle(
                                         color: Colors.white,
                                         wordSpacing: 5,
-                                        height: 1.8),
+                                        height: 2),
                                     softWrap: true,
                                     textAlign: TextAlign.right,
                                     textDirection: TextDirection.rtl,
                                   ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
                                 ),
                                 Consumer<ActionProvider>(
                                   builder: (context, actionProvider, child) {
@@ -71,10 +75,10 @@ class HomeScreen extends StatelessWidget {
                                         '${kurdish.tafseers?[ayahs[index].number! - 1]}',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontFamily: actionProvider
-                                                .selectedTafseerFont,
-                                            fontSize: actionProvider
-                                                .fontSizeOfTafseer,
+                                            fontFamily: storage
+                                                .read('selectedTafseerFont'),
+                                            fontSize: storage
+                                                .read('fontSizeOfTafseer'),
                                             height: 1.8),
                                         softWrap: true,
                                         textAlign: TextAlign.right,
